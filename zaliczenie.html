@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <title>Prezentacja Canvas by KH</title>
+
+    <!-- Linking styles -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+</head>
+<body>
+    <nav id="helpers"><!-- Defining the floating helpers of the page -->
+      <button title="Previous" id="nav-prev" class="nav-prev">&lt;-</button> 
+      <button title="Jump to slide" id="slide-no">3</button> 
+      <button title="Next" id="nav-next" class="nav-next">-&gt;</button>
+      <menu>
+        <button type="checkbox" data-command="notes" title="View Notes">Notatki</button>
+        <button type="checkbox" data-command="help" title="View Help">Pomoc</button>
+        <button type="checkbox" data-command="back" title="Back to tutorial">Wroc</button>
+      </menu>
+    </nav>
+
+    <div class="presentation"><!-- Defining the main presentation -->
+      <div id="presentation-counter">Wczytywanie.</div>
+
+      <div class="slides"><!-- Defining slides -->
+
+        <div class="slide" id="slide1"><!-- Defining single slide -->
+          <section class="middle">
+            <p>Instrukcja</p>
+            <p>Nacisnij <span id="left-init-key" class="key">&rarr;</span> aby przewijac slajdy.</p>
+			 <ul>
+              <li><span class="key">N</span> Notatki.</li>
+              <li><span class="key">H</span> Pomoc.</li>
+            </ul>
+			
+          </section>
+          <aside class="note"><!-- hidden notes of slide -->
+            <section>
+              Brak Notatki
+            </section>
+          </aside> 
+        </div>
+
+        <div class="slide" id="slide2">
+          
+          <section class="middle">
+            <hgroup>
+              <h2>
+                Canvas
+              </h2>
+            </hgroup>
+          </section>
+        </div>
+
+        <div class="slide" id="slide3">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                HTML5
+              </h1>
+              <h2>
+                Canvas
+              </h2>
+            </hgroup>
+            <p>Czy mozliwe jest stworzenie gry za pomoca jezyka HTML? Wbrew powszechnej opini HTML, dzieki nowoscia zawartym w wersji 5 nie jest juz tylko i wylacznie prostym jezykiem do tworzenia stron www! Od teraz mozesz o wiele wiecej! Jak to mozliwe?</p>
+          </section>
+        </div>
+
+        <div class="slide" id="slide4">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                Canvas
+              </h1>
+              <h2>
+                Czym jest?
+              </h2>
+            </hgroup>
+            <p>Canvas jest elementem HTML5, ktory pozwala nam na dynamiczne, skryptowe renderowanie ksztaltow i obrazow! W praktyce oznacza to, ze mozliwym stalo sie tworzenie dynamicznych dwu- i trojwymiarowych animacji i gier, bez dodatkowych wtyczek w przegladarce!</p>
+          </section>
+        </div>
+
+        <div class="slide" id="slide5">
+          <section class="middle">
+            <hgroup>
+              <h1>
+                Sprawdzmy
+              </h1>
+              <h2>
+                jak zrobic pierwsza gre w HTML5!
+              </h2>
+            </hgroup>
+          </section>
+        </div>
+		
+		        <div class="slide" id="slide6">
+          <section class="middle">
+            <hgroup>
+              <h2>
+					Zacznijmy od podstaw!
+              </h2>
+              <h2>
+                Utworz dowolny plik *.html
+              </h2>
+            </hgroup>
+            <p> Dodaj do niego <span class="key"><<!---->!DOCTYPE html> </span>, aby przegladarka wiedziala, ze w tym momencie bedziesz korzystal z HTML w wersji 5 z obsluga CANVAS!  </p>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide7">
+          <section class="middle">
+            <hgroup>
+              <h2>
+                Dodajmy standardowe pola w pliku html:
+              </h2>
+            </hgroup>
+            <span class="key"><<!---->head> </span> 
+			<span class="key"><<!---->/head> </span> <br>
+			<span class="key"><<!---->body> </span> 
+			<span class="key"><<!---->/body> </span> 
+          </section>
+        </div>
+
+		<div class="slide" id="slide8">
+          <section class="middle">
+            <hgroup>
+              <h2>
+                W HEAD dodajemy znaczniki <span class="key"><<!---->STYLE><<!---->/STYLE></span> wraz z kodem:
+              </h2>
+            </hgroup>
+				<p>body {<br>
+					background: #a9adb0 no-repeat center top;<br>
+					color: #333;<br>
+					font-family: Arial, Helvetica, sans-serif;<br>
+					font-size: 12px;}
+					</p>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide9">
+          <section class="middle">
+
+				<p>#center {<br>
+				margin: 0 auto;<br>
+					text-align: center;<br>
+					width: 468px;}<br>
+				#info {<br>
+					margin: 0 auto;	<br>
+					text-align: center;
+				}
+
+				</p>
+          </section>
+        </div>		
+			
+		<div class="slide" id="slide10">
+          <section class="middle">
+            <hgroup>
+              <h2>
+                Czyli ustalenie koloru tla, pozycji tla, oraz rozmiaru i wielkosci czcionki
+              </h2>
+            </hgroup>
+
+          </section>
+        </div>
+		
+		<div class="slide" id="slide11">
+          <section class="middle">
+            <hgroup>
+              <h2>
+                Czas na JavaScripts!
+              </h2>
+            </hgroup>
+					Zaraz po znaczniku <<!---->/style> dodaj znaczniki:
+					<span class="key"><<!---->script type="text/javascript"><<!---->/script></span><br>
+					Oznacza to, ze w tym momencie bedziesz korzystal z JavaScript. Gdzies w koncu musi znalesc sie cala konstrukcja gry!
+          </section>
+        </div>
+		
+		<div class="slide" id="slide12">
+          <section class="middle">
+            <hgroup>
+              <h2>
+                A teraz umiescimy tu zmienne:
+              </h2>
+            </hgroup>
+					var ballX = 200; //poczatkowa pozycja pilki na osi X<br>
+					var ballY = 50;   //poczatkowa pozycja pilki na osi Y<br>
+					var ballDX = 2; //odleglosc zmian polozenia pilki na osi X<br>
+					var ballDY = 4; //odleglosc zmian polozenia pilki na osi Y<br>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide13">
+          <section class="middle">
+				var racquetX= 150; //punkt poczatkowy belki<br>
+				var racquetH= 8; //wysokosc belki<br>
+				var racquetD = boardY - racquetH; //poczatkowa pozycja belki w pionie<br>	
+				var racquetW = 85; //szerokosc belki<br>
+				//zmienne potrzebne dla globalnego dostêpu<br>
+				var canvas;<br>
+				var ctx;<br>
+				var gameLoop;<br>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide14">
+          <section class="middle">
+			var licznik = 0; //licznik odbic <br>
+			var titleFontSize = "bold 24px Georgia"; //czcionka tytulowa<br>
+			var contentFontSize = "normal 12px Arial"; // czcionka wewnetrz gry<br>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide15">
+          <section class="middle">
+			   <hgroup>
+              <h2>
+                Czas na pierwsza funkcje. Funkcja drawGameCanvas bedzie pozwalala nam na globalny dostep do obiektu CANVAS!
+              </h2>
+            </hgroup>
+          </section>
+        </div>
+      
+	  
+	 <div class="slide" id="slide16">
+          <section class="middle">
+     function drawGameCanvas() { <br>
+        canvas = document.getElementById("gameBoard");<br>
+        if (canvas.getContext) {<br>
+          ctx = canvas.getContext("2d");<br>
+          gameLoop = setInterval(drawBall, 16);<br>
+          window.addEventListener('keydown', whatKey, true);}}
+          </section>
+        </div>
+		
+      <div class="slide" id="slide17">
+          <section class="middle">
+				Ta funkcja sprawdza takze, czy przegladarka obsluguje technologie CANVAS, jezeli tak to definiujemy jej typ jako '2D', natomiast 'gameLoop', czyli interwal odpowiedzialny jest za wywolywanie funkcji 'drawBall'. Bedzie to rysowanie pilki co 16 ms. Na koncu funkcji widzimy kod odpowiedzialny za wywolanie funkcji nasluchujacej klawisze.
+          </section>
+        </div>
+		
+		<div class="slide" id="slide18">
+          <section class="middle">
+		  		<hgroup>
+              <h2>
+                Teraz narysujmy pilke!
+              </h2>
+            </hgroup>
+				Tworzymy funkcje <span class="key">function drawBall(){}</span> <br>w ktorej umiescimy nastepujacy kod:
+          </section>
+        </div>
+		
+		<div class="slide" id="slide19">
+          <section class="middle">	
+		ctx.clearRect(0, 0, boardX, boardY);// wyczysc okienko z gra<br>
+			// wypelnij okienko z gra <br>
+				  ctx.fillStyle = "black"; //kolor tla<br>
+				  ctx.beginPath(); //otwarcie sciezki <br>
+			ctx.rect(0, 0, boardX, boardY); // rysowanie pola gry  <br>
+			ctx.closePath(); //zamkniecie sciezki<br>
+				  ctx.fill(); //wypelnienie<br>
+          </section>
+        </div>
+		
+				<div class="slide" id="slide20">
+          <section class="middle">	
+				// rysujemy pilke<br>
+						ctx.fillStyle = "yellow"; // kolor pilki<br>
+						ctx.beginPath();<br>
+						ctx.arc(ballX, ballY, 15, 0, Math.PI * 2, true); // rysuj pilke<br>
+						ctx.closePath();<br>
+						ctx.fill();<br>
+				 
+          </section>
+        </div>
+		
+		<div class="slide" id="slide21">
+          <section class="middle">	
+				// rysujemy belke<br>
+						ctx.fillStyle = "red";<br>
+						ctx.beginPath();<br>
+						ctx.rect(racquetX, racquetD, racquetW, racquetH);<br>
+						ctx.closePath();<br>
+						ctx.fill();<br>
+          </section>
+        </div>
+		
+				<div class="slide" id="slide22">
+          <section class="middle">
+		//zmiana pozycji pilki <br>		  
+		ballX += ballDX;<br>
+        ballY += ballDY;<br>
+		//Odbicie pilki od krawedzi lewej i prawej<br>
+        if (ballX + ballDX > boardX - 15 || ballX + ballDX < 15) ballDX = -ballDX;<br>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide23">
+          <section class="middle">
+		
+					if (ballY + ballDY < 15) ballDY = -ballDY;// Odbicie pilki od gory okna<br>
+			// Gdy pilka uderza o dolna krawedz, sprawdz czy dotknela belki<br>
+					else if (ballY + ballDY > boardY - 15) {<br>
+			// gdy dotknela belki, odbij ja<br>
+					  if (ballX > racquetX && ballX < racquetX + racquetW){<br>
+				ballDY = -ballDY;<br>
+				licznik = licznik +1;<br>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide24">
+          <section class="middle">
+		// inaczej zakoncz gre <br>
+		else {<br>
+		clearInterval(gameLoop); <br>
+		ctx.font = titleFontSize;   <br>
+		ctx.fillStyle = "white";    <br>
+        ctx.fillText("Przegrana...", 90, 130);<br>
+        ctx.font = contentFontSize;<br>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide25">
+          <section class="middle">
+        ctx.fillStyle = "white";  <br>
+		ctx.fillText("Wcisnij F5 aby zagrac ponownie!", 70, 150);<br>
+		ctx.font = contentFontSize;;ctx.fillStyle = "white";ctx.fillText("Ilosc odbic:", +90, 170);<br>
+		ctx.font = titleFontSize;ctx.fillStyle = "white";ctx.fillText(licznik, 170, 170);}}}
+          </section>
+        </div>
+		
+		<div class="slide" id="slide26">
+          <section class="middle">
+		  		<hgroup>
+              <h2>
+                Ale jaki klawisz zostal nacisniety?<br> Skad gra o tym ma wiedziec?
+              </h2>
+            </hgroup>
+			<p> Z pomoca przychodzi nam funkcja <span class="key">whatKey</span>!
+          </section>
+        </div>
+
+	  	<div class="slide" id="slide27">
+          <section class="middle">
+		  		<hgroup>
+              <h2>
+               function whatKey(evt){}
+              </h2>
+            </hgroup>
+			<p> 'evt' oznacza rozszerzenie funcji o klase event,<br> ktora umozliwia przechwytywanie zdarzen!
+          </section>
+        </div>
+		
+		<div class="slide" id="slide28">
+          <section class="middle">
+		   switch (evt.keyCode) { // odczytanie kodu przycisku <br>
+		   case 37: // kod strzalki 'lewo'  <br>
+		   racquetX = racquetX - 20; //przesuniecie belki w lewo o 20 pixeli<br>
+		   // Jesli belka jest przy brzegu - przerwij<br>
+		   if (racquetX < 0) racquetX = 0; <br>
+		   break;<br>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide29">
+          <section class="middle">
+			case 39: // kod strzalki 'prawo'<br> 
+          racquetX = racquetX + 20; //przesuniecie belki w prawo o 20 pixeli  <br>
+		  // Jesli belka jest przy brzegu - przerwij<br>
+          if (racquetX > boardX - racquetW) racquetX = boardX - racquetW;<br>
+          break;}}<br>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide30">
+          <section class="middle">
+		  	<hgroup>
+              <h2>
+               Konczymy juz edycje w znacznikach:
+              </h2>
+            </hgroup>
+			<span class="key">Script</span> oraz <span class="key">Head</span>!<br>
+			Przejdzmy teraz do znacznika <span class="key">Body</span>
+          </section>
+        </div>
+		
+				<div class="slide" id="slide31">
+          <section class="middle">
+
+			Edytujemy znacznik <span class="key"><<!---->body></span> aby wygladal tak:<br>
+			<span class="key"><<!---->body onLoad="drawGameCanvas()"></span> <br>
+			I dodajemy reszte kodu:<br>
+			<<!---->div id="center"><br>
+			 <<!---->canvas id="gameBoard" width="450" height="450"><<!---->/canvas>  <<!---->/div><br>
+			<<!---->/body><br>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide32">
+          <section class="middle">
+		  	<hgroup>
+              <h2>
+              Gratuluje! Wlasnie zrobiles swoja pierwsza gre przy uzyciu HTML5! Link do mojej gry znajdziesz na koncu prezentacji.
+              </h2>
+            </hgroup>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide33">
+          <section class="middle">
+		  	<hgroup>
+              <h2>
+              Spodobalo Ci sie?
+              </h2>
+            </hgroup>
+			<p>Jesli tak, powinienes zainteresowac sie PlayCanvas!</p>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide34">
+          <section class="middle">
+		  	<hgroup>
+              <h2>
+              PlayCanvas
+              </h2>
+            </hgroup>
+			<p>To zestaw narzedzi to tworzenia gier w HTML5, tworzony przez Dave'a Evansa, ktory odpowiada za wirtualny swiat PlayStation Home na konsoli PS3 firmy Sony, a takze Willa Eastcotta piastujacego niegdys stanowisko dyrektora technicznego w Activision.</p>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide35">
+          <section class="middle">
+			<p>Dzieki PlayCanvas mozna stwierdzic ze HTML5 nie jest juz tylko zwyklym, prostym jezykiem do tworzenia stron internetowych, ale dynamicznie rozwijajacym sie projektem ktory moze przyniesc wiele innowacyjnych rozwiazan!<br>
+
+Sprawdz pokazy DEMO na stronie PlayCanvas i przekonaj sie sam o mozliwosciach HTML5!</p>
+          </section>
+        </div>
+		
+		<div class="slide" id="slide36">
+          <section class="middle">
+		  		  	<hgroup>
+              <h2>
+              Dziekuje za uwage,<br>
+			  Karol Hinz
+              </h2>
+            </hgroup>
+			<p><a href="gra.html">Kliknij tutaj, aby zobaczyc gre z prezentacji</a></p>
+			<p><a href="http://playcanvas.com/demos/">Kliknij tutaj, aby zobaczyc DEMO PlayCanvas</a></p>
+          </section>
+        </div>
+		
+	  
+	  
+	  </div>
+      <div id="hidden-note" class="invisible" style="display: none;">
+      </div> <!-- hidden note -->
+
+      <aside id="help" class="sidebar invisible" style="display: hidden;"><!-- Defining sidebar help -->
+        <table>
+          <caption>Pomoc</caption>
+            <tr>
+              <th>Kolejny/poprzedni slajd</th>
+              <td>&larr;&nbsp;&rarr;</td>
+            </tr>
+            <tr>
+              <th>Naprzod</th>
+              <td>spacebar</td>
+            </tr>
+            <tr>
+              <th>Notatki</th>
+              <td>N</td>
+            </tr>
+            <tr>
+              <th>Pomoc</th>
+              <td>H</td>
+            </tr>
+        </table>
+      </aside>
+
+    </div>
+
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

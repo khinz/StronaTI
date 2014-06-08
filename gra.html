@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+  <head>
+  <style>
+body {
+	background: #a9adb0 no-repeat center top;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+#center {
+margin: 0 auto;
+	text-align: center;
+	width: 468px;
+}
+ 
+#info {
+	margin: 0 auto;	
+	text-align: center;
+}
+ 
+</style>
+    <script type="text/javascript">
+var ballX = 200;
+var ballY = 50;
+var ballDX = 2;
+var ballDY = 4;
+var boardX = 450;
+var boardY = 450;
+var racquetX= 150;
+var racquetH= 8;
+var racquetD = boardY - racquetH;
+var racquetW = 85;
+var canvas;
+var ctx;
+var gameLoop;
+var licznik = 0;
+var titleFontSize = "bold 24px Georgia";
+var contentFontSize = "normal 12px Arial";
+ 
+      function drawGameCanvas() {
+
+        canvas = document.getElementById("gameBoard");
+
+        if (canvas.getContext) {
+          ctx = canvas.getContext("2d");
+          gameLoop = setInterval(drawBall, 16);
+          window.addEventListener('keydown', whatKey, true);
+        }
+      }
+ 
+     function drawBall() {
+ 
+        ctx.clearRect(0, 0, boardX, boardY);
+
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.rect(0, 0, boardX, boardY);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = "orange";
+        ctx.beginPath();
+        ctx.arc(ballX, ballY, 15, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = "pink";
+        ctx.beginPath();
+        ctx.rect(racquetX, racquetD, racquetW, racquetH);
+        ctx.closePath();
+        ctx.fill();
+
+        ballX += ballDX;
+        ballY += ballDY;
+
+        if (ballX + ballDX > boardX - 15 || ballX + ballDX < 15) ballDX = -ballDX;
+        if (ballY + ballDY < 15) ballDY = -ballDY;
+        else if (ballY + ballDY > boardY - 15) {
+          if (ballX > racquetX && ballX < racquetX + racquetW){
+		  ballDY = -ballDY;
+		  licznik = licznik +1; 
+		  }
+
+          else {
+            clearInterval(gameLoop);
+ 
+            ctx.font = titleFontSize;
+            ctx.fillStyle = "white";
+            ctx.fillText("Przegrana...", 90, 130);
+ 
+            ctx.font = contentFontSize;
+            ctx.fillStyle = "white";
+            ctx.fillText("Wcisnij F5 aby zagrac ponownie!", 70, 150);
+			
+			ctx.font = contentFontSize;;
+			ctx.fillStyle = "white";
+			ctx.fillText("Ilosc odbic:", +90, 170);
+			
+			ctx.font = titleFontSize;
+			ctx.fillStyle = "white";
+			ctx.fillText(licznik, 170, 170);
+          }
+        }
+      }
+ 
+ 
+ 
+      function whatKey(evt) {
+ 
+        switch (evt.keyCode) {
+ 
+        case 37:
+          racquetX = racquetX - 20;
+          if (racquetX < 0) racquetX = 0;
+          break;
+ 
+ 
+        case 39:
+          racquetX = racquetX + 20;
+          if (racquetX > boardX - racquetW) racquetX = boardX - racquetW;
+          break;
+        }
+      }
+    </script>
+  </head>
+ 
+  <body onLoad="drawGameCanvas()">
+  <div id="center">
+      <canvas id="gameBoard" width="450" height="450"></canvas>
+	  </div>
+  </body>
+ 
